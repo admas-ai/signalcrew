@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="control-key" content="__CONTROL_KEY__"><title>SignalCrew · Bring the relay home</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body>
+<div class="shell">
+  <header><a class="wordmark" href="/">◈ SIGNAL<span>CREW</span></a><div class="top-right"><span id="connection" class="pill">DISCONNECTED</span><span class="mission-label">A COOPERATIVE CHAT MISSION</span></div></header>
+  <div class="notice" id="modeNotice">LOCAL REHEARSAL · Synthetic crew commands. Twitch is not connected.</div>
+  <main>
+    <section class="hero">
+      <div class="hero-copy"><div class="eyebrow">THE RELAY IS WAITING FOR YOU</div><h1>A thousand voices.<br><span>One rescue crew.</span></h1><p>Scan the route. Hold the shields. Make the jump.<br>Every viewer gets one contribution per round.</p><div class="objective">MISSION OBJECTIVE <strong>Travel 135 · Restore signal to 70</strong></div></div>
+      <div class="space" aria-label="Rescue ship approaching a signal relay">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="planet"></div><div class="beacon">⌁<span>RELAY 07</span></div>
+        <svg class="ship" viewBox="0 0 240 180" role="img" aria-label="SignalCrew rescue ship"><path d="M22 100 84 83 129 19 162 77 220 101 161 123 130 158 83 121Z" fill="#e9f0ec"/><path d="m84 83 46-64 14 68-28 29Z" fill="#89c9bb"/><path d="m84 121 32-5 45 7-31 35Z" fill="#516e83"/><path d="m161 77 59 24-59 22 21-23Z" fill="#d3ddd8"/><ellipse cx="137" cy="89" rx="20" ry="12" fill="#142d43"/><path class="flame" d="m52 96-46 6 46 8Z" fill="#ffb578"/></svg>
+        <div class="coordinate">SECTOR <strong id="sector">01 / 05</strong><span>COURSE: HOME</span></div>
+      </div>
+    </section>
+    <section class="instrument-panel" aria-label="Ship status"><div><span>HULL INTEGRITY</span><strong id="hull">100</strong><progress id="hullBar" max="100" value="100"></progress></div><div><span>ENERGY RESERVE</span><strong id="energy">65</strong><progress id="energyBar" max="100" value="65"></progress></div><div><span>RELAY SIGNAL</span><strong id="signal">0</strong><progress id="signalBar" max="100" value="0"></progress></div><div><span>DISTANCE TRAVELED</span><strong id="distance">0 <small>/ 135</small></strong><progress id="distanceBar" max="135" value="0"></progress></div></section>
+    <section class="round-head"><div><div class="eyebrow" id="phase">READY FOR LAUNCH</div><h2 id="weather">Debris corridor</h2><p id="hint">Shields protect the hull. Boost through the gap.</p></div><div class="round-clock"><strong id="timer">—</strong><span id="crewTotal">0 crew contributions</span></div></section>
+    <section class="actions" aria-label="Chat commands">
+      <article class="action-card scan"><span class="role-icon">⌖</span><div><div class="eyebrow">NAVIGATION</div><h3>Scan the unknown.</h3><p>Restore the signal and recover energy.</p><code>!crew scan</code></div><strong id="scanCount">0</strong><div class="vote-track"><i id="scanMeter"></i></div></article>
+      <article class="action-card shield"><span class="role-icon">◇</span><div><div class="eyebrow">DEFENSE</div><h3>Keep us together.</h3><p>Protect the hull from this sector’s hazard.</p><code>!crew shield</code></div><strong id="shieldCount">0</strong><div class="vote-track"><i id="shieldMeter"></i></div></article>
+      <article class="action-card boost"><span class="role-icon">↗</span><div><div class="eyebrow">PROPULSION</div><h3>Close the distance.</h3><p>Trade energy for a leap toward home.</p><code>!crew boost</code></div><strong id="boostCount">0</strong><div class="vote-track"><i id="boostMeter"></i></div></article>
+    </section>
+    <div id="result" class="result" role="status"></div>
+    <section class="captain" id="captain"><div class="console-head"><div><div class="eyebrow">CAPTAIN’S CONSOLE</div><h2>You set the pace. Chat flies the ship.</h2></div><a href="/overlay" target="_blank" rel="noopener">Open OBS display ↗</a></div>
+      <div class="controls"><button data-control="start" id="start">Launch round</button><button data-control="pause" id="pause" class="secondary">Pause</button><button data-control="resume" id="resume" class="secondary">Resume</button><button data-control="resolve" id="resolve" class="secondary">Resolve now</button><button data-reset="rehearsal" class="quiet">New rehearsal</button><button data-reset="live" class="quiet">New Twitch mission</button></div>
+      <div class="setup-grid"><div><h3>Twitch connection</h3><p id="twitchDetail">Set the public Twitch client ID in .env to connect.</p><div class="controls"><button id="connect" class="secondary">Connect Twitch</button><button id="retry" class="quiet">Retry connection</button><button id="disconnect" class="quiet">Disconnect</button></div><div id="device" hidden><p>Approve read-only chat access on Twitch:</p><a id="activation" target="_blank" rel="noreferrer noopener">Open Twitch authorization ↗</a><p>Code: <strong id="deviceCode"></strong></p></div></div><div id="rehearsal"><h3>Rehearsal crew</h3><p>Each click adds one synthetic viewer. These are not live Twitch messages.</p><div class="controls"><button data-rehearsal="scan" class="secondary">+ Scan</button><button data-rehearsal="shield" class="secondary">+ Shield</button><button data-rehearsal="boost" class="secondary">+ Boost</button></div></div></div>
+      <p id="error" class="error" role="alert"></p>
+    </section>
+    <section class="debrief"><div class="console-head"><h2>Mission log</h2><a href="/api/evidence" target="_blank" rel="noopener">View evidence JSON ↗</a></div><p class="muted">Aggregate round results. No chat text, viewer names, or OAuth tokens are stored in this log.</p><div id="history" class="history"><p>No completed rounds yet.</p></div></section>
+  </main><footer>BUILT WITH CODEX <span>SignalCrew · One viewer. One contribution. One crew.</span><span id="sourceFooter">REHEARSAL</span></footer>
+</div></body></html>
